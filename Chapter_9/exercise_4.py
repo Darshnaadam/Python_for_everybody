@@ -4,8 +4,9 @@
 # Maximum and minimum loops) to find who has the most messages and print how
 # many messages the person has.
 
-largest = None
-dictionary = dict()                   
+dictionary = dict()  
+maximum = 0
+maximum_address = ''                 
 fname = input('Enter file name: ')
 try:
     fhand = open(fname)
@@ -22,8 +23,11 @@ for line in fhand:
             dictionary[words[1]] = 1 
         else:
             dictionary[words[1]] += 1    
-    if largest == None or words > largest:
-            largest = words
+    
 
-print(dictionary)
-print("Maximum: ", largest)
+for address in dictionary:
+    if dictionary[address] > maximum:
+        maximum = dictionary[address]
+        maximum_address = address
+
+print(maximum_address, maximum)
